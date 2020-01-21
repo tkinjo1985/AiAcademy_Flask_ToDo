@@ -54,11 +54,6 @@ def add():
             db.commit()
             return redirect(url_for('todo.index'))
 
-    tasks = get_all_tasks()
-    done_tasks = get_all_done_tasks()
-
-    return render_template('index.html', tasks=list(tasks), done_tasks=list(done_tasks))
-
 
 @bp.route('/done', methods=('POST',))
 def done():
@@ -67,11 +62,6 @@ def done():
                (request.form['task_id'], ))
     db.commit()
     return redirect(url_for('todo.index'))
-
-    tasks = get_all_tasks()
-    done_tasks = get_all_done_tasks()
-
-    return render_template('index.html', tasks=list(tasks), done_tasks=list(done_tasks))
 
 
 @bp.route('/update', methods=('POST',))
@@ -83,8 +73,3 @@ def update():
     )
     db.commit()
     return redirect(url_for('todo.index'))
-
-    tasks = get_all_tasks()
-    done_tasks = get_all_done_tasks()
-
-    return render_template('index.html', tasks=list(tasks), done_tasks=list(done_tasks))
